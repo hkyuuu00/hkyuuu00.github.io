@@ -1,7 +1,6 @@
-name: Jekflix
-title: Jekflix | A blog theme for Jekyll
-description: Jekflix is a template for Jekyll inspired by Netflix and made by
-  Thiago Rossener.
+name: Study BLoG
+title: Home | Study BLoG
+description: 코딩 공부와 취미생활을 하는 나만의 블로그 입니다.
 tags:
   - blog
   - template
@@ -14,11 +13,11 @@ menu:
     url: /
   - title: About
     url: /about
-  - title: Contact
+  - title: Programing
     url: /contact
-  - title: Feed
+  - title: Hobby
     url: /feed.xml
-email: youremail@test.com
+email: dlgusrb1596@naver.com
 # See: https://disqus.com/
 disqus_username: disqus_username
 # Contact Form Setting

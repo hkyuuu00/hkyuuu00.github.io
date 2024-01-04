@@ -1,29 +1,30 @@
 ---
 layout: post
-title:  "Welcome to Jekyll!"
-date:   2024-01-04 15:09:08 +0900
+title: "블로그 시작"
+date: 2024-01-04 23:42:08 +0900
 categories: jekyll update
 ---
-You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run `jekyll serve`, which launches a web server and auto-regenerates your site when a file is updated.
 
-Jekyll requires blog post files to be named according to the following format:
+블로그 첫 게시물입니다. Jekyll 테마인 jekflix 테마를 적용하고 하나씩 알아보며 수정 중 입니다.
 
-`YEAR-MONTH-DAY-title.MARKUP`
+포스팅 글에서 하이라이트를 주고싶으면 백틱(backtick)을 이용하여 포인트를 줍니다.
+예시로 jekyll에 하이라이트를 줘보겠습니다.`jekyll` 이런 식으로 하이라이트가 들어갑니다.
 
-Where `YEAR` is a four-digit number, `MONTH` and `DAY` are both two-digit numbers, and `MARKUP` is the file extension representing the format used in the file. After that, include the necessary front matter. Take a look at the source for this post to get an idea about how it works.
+다음은 코딩을 전체적으로 보여주기 위해 코딩창을 띄워보겠습니다.
 
-Jekyll also offers powerful support for code snippets:
+% highlight ruby % 로 시작하고 % endhighlight % 로 끝내며 이 사이에 코딩을 하면 코딩창으로 표현이 됩니다.
 
+예시로 Hello World를 출력하는 코드를 작성해보겠습니다.
 {% highlight ruby %}
-def print_hi(name)
-  puts "Hi, #{name}"
-end
-print_hi('Tom')
-#=> prints 'Hi, Tom' to STDOUT.
+#include <stdio.h>
+int main() {
+printf("Hello World\n");
+return 0;
+}
 {% endhighlight %}
 
-Check out the [Jekyll docs][jekyll-docs] for more info on how to get the most out of Jekyll. File all bugs/feature requests at [Jekyll’s GitHub repo][jekyll-gh]. If you have questions, you can ask them on [Jekyll Talk][jekyll-talk].
+첫 게시물 끝!
 
 [jekyll-docs]: https://jekyllrb.com/docs/home
-[jekyll-gh]:   https://github.com/jekyll/jekyll
+[jekyll-gh]: https://github.com/jekyll/jekyll
 [jekyll-talk]: https://talk.jekyllrb.com/
