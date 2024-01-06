@@ -3,6 +3,7 @@ layout: post
 title: "블로그 시작"
 date: 2024-01-04 23:42:08 +0900
 categories: jekyll update
+image: /assets/img/post/jeju.jpg
 ---
 
 블로그 첫 게시물입니다. Jekyll 테마인 jekflix 테마를 적용하고 하나씩 알아보며 수정 중 입니다.
