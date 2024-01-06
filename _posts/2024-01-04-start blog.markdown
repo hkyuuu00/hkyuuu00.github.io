@@ -1,9 +1,15 @@
 ---
+date: 2024-01-04 23:42:08 +0900
 layout: post
 title: "블로그 시작"
-date: 2024-01-04 23:42:08 +0900
-categories: jekyll update
+subtitle: "블로그 첫 포스트"
+description: 블로그 첫 게시물입니다. 하나씩 알아보며 수정 중 입니다.
 image: /assets/img/post/jeju.jpg
+optimized_image: /assets/img/post/jeju-optimized.jpg
+category: blog
+tags:
+  - blog
+  - 첫 포스트
 ---
 
 블로그 첫 게시물입니다. Jekyll 테마인 jekflix 테마를 적용하고 하나씩 알아보며 수정 중 입니다.
