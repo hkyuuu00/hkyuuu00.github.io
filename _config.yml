@@ -15,9 +15,9 @@ menu:
   - title: About
     url: /about
   - title: Programing
-    url: /contact
+    url: /tags
   - title: Hobby
-    url: /feed.xml
+    url: /tags
 email: dlgusrb1596@naver.com
 # See: https://disqus.com/
 disqus_username: disqus_username
