@@ -30,8 +30,6 @@ return 0;
 }
 {% endhighlight %}
 
-첫 게시물 끝!
+사진은 1900x1000 비율로 업로드 하기
 
-[jekyll-docs]: https://jekyllrb.com/docs/home
-[jekyll-gh]: https://github.com/jekyll/jekyll
-[jekyll-talk]: https://talk.jekyllrb.com/
+첫 게시물 끝!
