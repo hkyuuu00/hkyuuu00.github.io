@@ -1,0 +1,272 @@
+---
+date: 2024-01-10 18:30:08 +0900
+layout: post
+title: "[MySQL] MySQL 기초 정리 - (1)"
+subtitle: "MySQL 기초를 정리하며 데이터베이스 배우기"
+description: MySQL의 기본 문법들을 공부하며 정리하고 데이터베이스에 대해 공부하는 글
+image: /assets/img/post/mysql.jpg
+optimized_image: /assets/img/post/mysql-optimized.jpg
+category: programing
+tags:
+  - programing
+  - MySQL
+  - DB
+---
+
+## 목차
+
+- MySQL 실행
+- MySQL 기본 명령어
+- MySQL 기본 문법 - DDL
+- MySQL 기본 문법 - DML
+
+## MySQL 실행
+
+이 글에서는 **MySQL**의 기초를 정리하고 간단하게 다룰 것이다.
+
+먼저 저는 **XAMPP**를 이용하여 **MySQL**을 실행해보도록 해보겠다.
+**XAMPP**에서 **MySQL**을 시작해주고 *Shell* 버튼을 눌러 명령프로토콜 창을 띄워준다.
+
+**MySQL**을 실행하기 위한 명령어를 입력하면 실행된다.
+
+`mysql -uroot -p`
+
+*-uroot*는 유저로 루트에 접근한다는 의미이며, *-p*는 따로 패스워드를 입력한다는 의미다.
+
+이렇게 **MySQL**을 실행시켰고 나가려면 *exit* 명령어를 입력하면 된다.
+
+`exit`
+
+## MySQL 기본 명령어
+
+데이터베이스안에 테이블이 있고 테이블안에 컬럼이 있다.
+영문자로 시작해야하며 영문자와 숫자로 구성되어 있다.
+문자열은 따옴표로 지정하며 명령 입력 후에는 세미콜론(;)을 붙여 끝낸다.
+
+먼저 기본 명령어를 알아보자.
+
+목록 확인하기
+
+- `show databases;` (데이터 베이스의 목록 확인)
+- `show tables;` (테이블의 목록 확인)
+
+DB or Table 생성하기
+
+- `create database 데이터베이스 이름;` (데이터베이스 생성)
+- `create table 테이블 이름;` (테이블 생성)
+
+DB 선택
+
+- `use 데이터베이스 이름;` (데이터베이스 선택)
+
+화면 청소
+
+- `system cls;`
+
+기본 작업 순서는 이런 식으로 이루어진다.
+
+1.  DB 생성
+2.  DB 선택
+3.  Table 생성
+4.  자료 접근
+
+## MySQL 기본 문법 - DDL
+
+### 테이블 생성
+
+테이블 생성에서는 테이블을 생성하고 테이블에 들어가는 컬럼들을 넣어줘야 한다.
+
+`create table 테이블 이름(
+컬럼이름 데이터형 옵션
+컬럼이름 데이터형 옵션
+);`
+
+먼저 **database**를 생성한 후 테이블을 생성한다.
+
+`create database web;`
+
+//web 데이터베이스 생성
+
+`use web;`
+
+//web 데이터베이스 선택
+
+`create table grade(
+num int,
+name char(10),
+attendance int,
+exam int,
+quiz int,
+grade char(2)
+);`
+
+// *grade*라는 테이블을 만들고 그 안에 *num, name, attendance, exam, quiz, grade* 라는 컬럼을 각각의 자료형에 맞춰 생성해준다.
+
+여기서 자료형에 대해 알아보자.
+
+문자
+
+- char(size) : 고정길이 문자열을 표현
+- varchar(size) : 가변길이 문자열을 표현
+
+숫자
+
+- int : 4비트 표준 정수 표현
+- bigint : 8비트 큰 정수 표현
+- float : 4비트 부동 소수점 표현
+- double : 8비트 부동 소수점 표현
+
+날짜
+
+- date : 날짜 값, "YYYY-MM-DD" 형식
+- time : 시간 값, "hh:mm:ss" 형식
+- year : 연도 표시, "YYYY" 형식
+- datetime : 날짜와 시간 값 "YYYY-MM-DD hh:mm:ss" 형식
+- timestamp: 타임 스탬프 값 "YYYYMMDDhhmmss" 형식
+
+### 테이블 수정
+
+테이블을 수정하기 위해 *alter*와 *SQL 명령어*를 이용하여 수정해준다.
+
+`alter table 테이블 이름 [SQL 명령어] 컬럼이름 데이터형;`
+
+#### 컬럼 추가
+
+먼저 컬럼을 하나 추가하고 싶으면 *add*를 이용하여 추가할 수 있으며, 추가하는 위치는 *after*와 *first*를 이용하여 위치를 선택할 수 있다.
+
+`alter table grade add tel char(30);`
+
+//grade 테이블에서 tel 컬럼을 추가한다.
+
+`alter table grade add tel char(30) after name;`
+
+//grade 테이블에서 tel 컬럼을 name 컬럼뒤에 추가한다.
+
+`alter table grade add num int first;`
+
+//grade 테이블에서 num 컬럼을 맨 앞에 추가한다.
+
+#### 컬럼 변경
+
+다음은 데이터 변경으로 *change*와 *modify*를 이용하여 변경할 수 있으며, rename을 사용하여 이름을 변경할 수 있다.
+
+`alter table grade change name id char(10);`
+
+//name 컬럼을 id 컬럼으로 변경하고 자료형은 char(10)을 사용한다.
+
+`alter table grade modify name char(10);`
+
+//name 컬럼의 이름은 유지하고 자료형만 변경한다.
+
+`alter table grade rename student;`
+
+//grade 테이블의 이름을 student로 변경한다.
+
+### 테이블 삭제와 구조 확인
+
+다음은 *drop*을 사용하여 제거할 수 있으며, 테이블 구조를 확인할 때에는 *desc*를 이용하여 확인할 수 있다.
+
+`alter table grade drop tel;`
+
+//tel 컬럼을 제거한다.
+
+`drop table grade;`
+
+//grade 테이블을 제거한다.
+
+`desc grade;`
+
+//grade 테이블의 구조 확인
+
+## MySQL 기본 문법 - DML
+
+### 테이블에 데이터 삽입
+
+테이블에 데이터를 삽입하기 위한 명령이다.
+
+`insert into 테이블 이름 [삽입할 컬럼명] values (컬럼에 넣을 값);`
+
+*insert into* 이후 테이블 이름만 적으면 전체 정보에 삽입되며, 컬럼명까지 넣어주면 그 컬럼에 삽입된다.
+
+`insert into grade values (1, "kim", 8, 80, 10, "A+");`
+
+//컬럼 수와 입력 데이터 수가 일치해야 하며 자료가 없으면 빈 따옴표로 처리한다.
+
+`insert into grade (num, name) values (2, "lee");`
+
+//특정 컬럼을 지정하여 자료를 입력한다.
+
+<table width = "300">
+  <thead>
+    <tr>
+      <th>num</th>
+      <th>name</th>
+      <th>attendance</th>
+      <th>exam</th>
+      <th>quiz</th>
+      <th>grade</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <th>kim</th>
+      <th>8</th>
+      <th>80</th>
+      <th>10</th>
+      <th>A+</th>
+    </tr>
+    <tr>
+      <th>2</th>
+      <th>lee</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </tbody>
+</table>
+
+### 테이블 데이터 조회
+
+테이블에 데이터를 넣었으면 데이터를 조회하여 확인해보기 위해 데이터를 조회하는 명령을 알아보자.
+
+`select 컬럼명 from 테이블 이름 where 조건;`
+
+특정 컬럼을 조회하고 싶으면 컬럼명을 넣고 전체를 조회하고 싶으면 *을 사용하여 조회한다.
+
+`select * from grade;`
+
+//grade 테이블 전체를 조회한다.
+
+`select * from grade where name = "kim";`
+
+//이름이 kim인 사람의 정보를 전체 조회한다.
+
+이렇게 *where*을 이용해 조건을 붙힐 수 있다.
+
+### 테이블 데이터 수정
+
+테이블 데이터가 문제가 있을 경우 수정하기 위한 명령을 알아보자.
+
+`update 테이블 이름 set 컬럼명 = 수정할 값, 컬럼명 = 수정할 값 ... where 조건;`
+
+이런 방식으로 set을 이용하여 컬럼의 데이터를 수정할 수 있으며 *where*을 이용해 수정할 부분의 위치를 특정하여 수정할 수 있다.
+
+`update grade set name = "park" where num = 1;`
+
+//num 컬럼이 1번인 데이터의 name 컬럼을 park으로 수정한다.
+
+### 테이블 데이터 삭제
+
+컬럼이나 테이블, 데이터베이스를 삭제하는 *drop*과는 다르게 테이블 안에 있는 데이터를 지우기 위해 사용되는 명령으로 *delete*를 이용하여 삭제한다.
+
+`delete from 테이블 이름 where 조건;`
+
+마찬가지로 *where*을 이용해 특정 데이터를 삭제할 수 있다.
+
+`delete from grade where name = "lee" and num = 2;`
+
+//grade 테이블에서 name 컬럼이 lee이고 num 컬럼이 2인 데이터를 삭제한다.
+
+다음에는 데이터 백업과 복원, 외부파일에서 데이터 입력, 그리고 여러 기능들과 함수들을 알아보도록 하겠다.
