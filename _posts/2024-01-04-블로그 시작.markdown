@@ -24,9 +24,10 @@ tags:
 예시로 Hello World를 출력하는 코드를 작성해보겠습니다.
 {% highlight ruby %}
 #include <stdio.h>
+
 int main() {
-printf("Hello World\n");
-return 0;
+  printf("Hello World\n");
+  return 0;
 }
 {% endhighlight %}
 

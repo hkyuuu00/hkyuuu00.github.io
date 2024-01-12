@@ -1,0 +1,295 @@
+---
+date: 2024-01-12 19:20:23 +0900
+layout: post
+title: "[MySQL] MySQL PHP연동"
+subtitle: "MySQL과 PHP를 연동하여 데이터 저장하기"
+description: MySQL과 PHP를 연동하여 회원가입 페이지에서 받은 데이터 저장 후 회원검색 페이지에서 데이터 검색해보기
+image: /assets/img/post/mysql_php.jpg
+optimized_image: /assets/img/post/mysql_php-optimized.jpg
+category: programing
+tags:
+  - programing
+  - MySQL
+  - DB
+  - PHP
+---
+
+<span style="font-size:1.9em; font-weight:bold;">목차</span>
+* TOC
+{:toc}
+
+
+<span style="font-size:1.9em; font-weight:bold;">PHP와 MySQL 연동 함수</span>
+
+*PHP*와 *MySQL*을 연동하여 회원가입 페이지와 회원검색 페이지를 만들어 회원가입 페이지에서 데이터를 받아 *MySQL* 데이터베이스에 저장하고, 회원검색 페이지에서 검색하여 데이터를 받아오도록 해보겠다.
+
+
+### DB 연결과 종료
+
+*PHP*를 데이터베이스와 연결할 때에 사용하는 함수이다.
+
+`mysqli_connect('호스트명','유저명','패스워드);`
+
+작업을 끝낸 후 종료할 때 사용하는 함수이다.
+
+`mysqli_close(링크 식별자);`
+
+```php
+$dbcon = mysqli_connect('localhost', 'root', 'icc');
+//비밀번호가 없다면 '' 입력
+//DB 연결이 잘 되었는지 확인해보고 싶다면 print_r($dbcon);
+mysqli_close($dbcon);
+```
+
+
+### DB 선택
+
+데이터베이스를 선택하는 함수로 *MySQL*에서 **use**와 같은 함수이다.
+
+`mysqli_select_db(링크식별자, 데이터베이스명);`
+
+```php
+mysqli_select_db($dbcon, 'ktest');
+```
+
+
+### 사용자 자료 입력
+
+사용자가 자료를 입력하기 위해 **query**를 사용하여 *MySQL*의 명령을 실행하는 함수이다.
+
+`$query = "insert into 테이블명 values ('입력할 정보','','')";`
+
+```php
+$query = "$query = "insert into member values (null, '$uname', '$phone', '$gender', '$birth')";
+$query = "select * from member";
+```
+
+
+### 사용자 자료 전송
+
+*PHP로 사용자의 자료를 받아 데이터베이스로 자료를 전송하는 함수이다.
+
+`mysqli_query(링크식별자,query);`
+
+```php
+mysqli_query($dbcon, $query);
+```
+
+
+### 회원가입 페이지 만들기
+
+위에서 배운 내용을 가지고 간단한 회원가입 페이지를 만들어 받은 자료를 데이터베이스에 저장하는 과정을 실습해보자.
+
+먼저 간단한 회원가입 페이지를 *HTML*을 이용해 만들어보자.
+
+```html
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>회원가입</title>
+    </head>
+
+    <body>
+        <a href="./db0111.html">[회원가입]</a>
+        <a href="./db0111_1.html">[회원검색]</a>
+        <h1>주소록 입력하기</h1>
+        <form action = './db0111.php' method="post">
+            이름: <input type="text" name="uname"><br>
+            전화: <input type="tel" name="phone"><br>
+            성별: <input type="radio" name="gender" value="male">남성
+            <input type="radio" name="gender" value="female">여성<br>
+            생년월일: <input type="date" name="birth"><br><br>
+            <input type="submit" value="입력완료">
+        </form>
+    </body>
+</html>
+```
+
+다음은 위의 *HTML*을 작동하게 하는 *PHP*파일을 만들어보자.
+
+```php
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>회원가입</title>
+    </head>
+
+    <body>
+       <?php
+       $uname = $_POST['uname'];
+       $phone = $_POST['phone'];
+       $gender = $_POST['gender'];
+       $birth = $_POST['birth'];
+        //정보 가져오기
+
+       $dbcon = mysqli_connect('localhost', 'root', '');
+        //데이터베이스 연결
+
+       mysqli_select_db($dbcon, 'ktest');
+       //데이터베이스 선택
+
+       $query = "insert into member values (null, '$uname', '$phone', '$gender', '$birth')";
+        //데이터베이스에 사용자 자료 입력
+
+        $check = mysqli_query($dbcon, $query);
+        //사용자 자료 전송
+
+        if($check) echo "환영합니다. $uname"."님의 정보가 잘 입력되었습니다.";
+        else        echo "오류가 발생하였습니다. 관리자에게 문의하세요.";
+
+        mysqli_close($dbcon);
+
+       ?>
+    </body>
+</html>
+```
+
+회원가입 페이지에서 정보를 입력하여 데이터베이스에 잘 저장되는것이 확인된다.
+
+
+### 결과 가져오기
+
+데이터베이스에서 결과를 가져오는 함수인 *fetch_array()*와 *fetch_row()*에 대해 알아보자.
+
+<span style="font-size:1.0em; color:#fcb603;">공통점</span>
+
+둘의 공통점은 한 행에서 데이터를 읽는 함수이다. 또한 데이터를 읽은 후 함수 내부에서 포인터를 증가시켜 다시 호출될 때 다음행을 읽을 수 있도록 한다.
+
+<span style="font-size:1.1em; font-weight:bold;">mysql_fetch_array()</span>
+
+**mysql_fetch_array()**는 필드 명으로 접근하며 *$result type*의 값에 따라 반환 될 배열의 형태가 다르다. 그래서 원하는 컬럼을 반환할 수 있기에 가독성이 좋고 편하다는 장점이 있다.
+
+`mysqli_fetch_array(result set)`
+
+```php
+while($row = mysqli_fetch_array($result)){
+            echo $row['uname'];
+            echo $row['phone'];
+            echo $row['gender'];
+            echo $row['birth'];
+        }
+/*결과
+    이름,전화번호,성별,생일
+	이름,전화번호,성별,생일
+	이름,전화번호,성별,생일
+*/
+```
+
+<span style="font-size:1.1em; font-weight:bold;">mysql_fetch_row()</span>
+
+**mysql_fetch_row()**는 0으로 시작하는 숫자형 인덱스 배열로 반환한다. 인덱스 번호로만 데이터를 구분하기에 가독성이 떨어지는 단점이 있다.
+
+`mysqli_fetch_row(result set)`
+
+```php
+while($row = mysqli_fetch_row($result)){
+            echo $row[1];
+            echo $row[2];
+            echo $row[3];
+            echo $row[4];
+        }
+/*결과
+    이름,전화번호,성별,생일
+	이름,전화번호,성별,생일
+	이름,전화번호,성별,생일
+*/
+```
+### 회원검색 페이지 만들기
+
+위에 내용을 가지고 데이터베이스에서 결과를 받아 회원검색 페이지에 출력하도록 하는 실습을 해보자.
+
+먼저 *HTML*을 이용해 회원검색 페이지를 만들어준다.
+
+```html
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>회원검색</title>
+    </head>
+
+    <body>
+        <a href="./db0111.html">[회원가입]</a>
+        <a href="./db0111_1.html">[회원검색]</a>
+        <h1>주소록 검색하기</h1>
+        <form action = './db0111_1.php' method="post">
+            이름: <input type="text" name="uname"><br>
+            
+            성별: 
+            <select name = 'gender'>
+                <option value="all">모두</option>
+                <option value="male">남성</option>
+                <option value="female">여성</option>
+            </select>
+            <input type="submit" value="찾기">
+        </form>
+    </body>
+</html>
+```
+
+다음은 *PHP*를 이용하여 회원검색 페이지가 작동하도록 해보자.
+
+```php
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>회원검색</title>
+    </head>
+
+    <body>
+       <?php
+       $uname = $_POST['uname'];
+       $gender = $_POST['gender'];
+        //정보 가져오기
+
+       $dbcon = mysqli_connect('localhost', 'root', '');
+        //데이터베이스 연결
+
+       mysqli_select_db($dbcon, 'ktest');
+       //데이터베이스 선택
+
+        if($uname == ''){
+            if($gender == 'all'){
+                $query = "select * from member";
+            }
+            else {
+                $query = "select * from member where gender = '$gender'";
+            }
+        }else{
+            if($gender == 'all'){
+                $query = "select * from member where uname = '$uname'";
+            }
+            else {
+                $query = "select * from member where uname = '$uname' and gender = '$gender'";
+            }
+        }
+        //데이터베이스에 사용자 자료 검색
+
+        $result = mysqli_query($dbcon, $query);
+        //사용자 자료 전송
+
+        echo "<table border = '1'>";
+
+        while($row = mysqli_fetch_row($result)){
+            echo "<tr>";
+            echo "<td>".$row[1]."</td>";
+            echo "<td>".$row[2]."</td>";
+            echo "<td>".$row[3]."</td>";
+            echo "<td>".$row[4]."</td>";
+            echo "</tr>";
+        }
+        echo "</table>";
+        //한 줄씩 배열 형태로 변환
+
+        mysqli_close($dbcon);
+
+       ?>
+    </body>
+</html>
+```
+
+회원검색 페이지에서 성별과 이름을 검색해보면 잘 작동하는 것을 알수있다.
+지금까지 데이터베이스를 *PHP*에 연동하여 데이터를 저장하고 출력해보았다.
