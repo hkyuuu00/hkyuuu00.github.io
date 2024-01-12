@@ -32,4 +32,15 @@ return 0;
 
 사진은 1900x1000 비율로 업로드 하기
 
+
+```css
+* TOC
+{:toc}
+```
+위의 코드를 사용해 *#*으로 서브헤더로 지정된 항목들을 목차로 만들어준다.
+
+*#*이 아닌 제목을 작성하려면 밑의 코드를 사용한다.
+- h3 -> `span style="font-size:1.4em; font-weight:bold;"`
+- h4 -> `span style="font-size:1.1em; font-weight:bold;"`
+
 첫 게시물 끝!

@@ -13,12 +13,9 @@ tags:
   - DB
 ---
 
-## 목차
-
-- MySQL 데이터 백업 및 복원
-- 외부파일에서 데이터 입력
-- MySQL 기능
-- MySQL 함수
+<span style="font-size:1.9em; font-weight:bold;">목차</span>
+* TOC
+{:toc}
 
 
 ## MySQL 데이터 백업 및 복원
@@ -60,7 +57,7 @@ input.txt 파일을 grade 테이블로 옮기는 명령이며 구분자는 **버
 
 모든 기능을 정리하진 않았지만 일부의 기능들을 정리해보았다.
 
-#### auto_increment 속성
+<span style="font-size:1.1em; font-weight:bold;">auto_increment 속성</span>
 
 **auto_increment** 속성은 Num 컬럼의 경우, 자동 증가되도록 하는 속성이다.
 
@@ -70,7 +67,7 @@ input.txt 파일을 grade 테이블로 옮기는 명령이며 구분자는 **버
 
 Num 데이터 입력 시, *'null'*로 빈 값 입력하면 자동으로 값을 생성하여 저장한다.
 
-#### Order by
+<span style="font-size:1.1em; font-weight:bold;">Order by</span>
 
 데이터를 검색할 때 특정 컬럼을 기준으로 정렬하는 명령이다.
 오름차순으로 정리할 때 *ASC*라고 표기하지만 대부분 생략한다.
@@ -90,7 +87,7 @@ Num 데이터 입력 시, *'null'*로 빈 값 입력하면 자동으로 값을 �
 
 //프로젝트를 기준으로 오름차순 정렬하고, 같은 점수가 있을 시 퀴즈 점수로 내림차순 정렬
 
-#### Select 명령에서의 연산
+<span style="font-size:1.1em; font-weight:bold;">Select 명령에서의 연산</span>
 
 *where*을 사용하여 조건을 입력할 경우 '='말고도 이상, 이하, 초과, 미만 등 표현할 수 있다.
 
@@ -100,7 +97,7 @@ Num 데이터 입력 시, *'null'*로 빈 값 입력하면 자동으로 값을 �
 
 //grade 테이블에서 attendance와 term, quiz 컬럼의 값을 연산하고, total로 출력한다.
 
-#### 데이터 패턴 검색
+<span style="font-size:1.1em; font-weight:bold;">데이터 패턴 검색</span>
 
 와일드카드 문자와 *like, not like*을 사용하여 검색을 할 수 있다.
 *like*는 참을 나타내며 *not like*은 거짓을 나타낸다.
@@ -118,7 +115,7 @@ Num 데이터 입력 시, *'null'*로 빈 값 입력하면 자동으로 값을 �
 
 ## MySQL 함수
 
-#### 레코드의 개수를 세는 함수
+<span style="font-size:1.1em; font-weight:bold;">레코드의 개수를 세는 함수</span>
 
 *count()*는 레코드의 수를 출력하는 함수이다.
 
@@ -138,7 +135,7 @@ Num 데이터 입력 시, *'null'*로 빈 값 입력하면 자동으로 값을 �
 
 `select * from students where address = '천안' limit 3;`
 
-#### 수학 함수
+<span style="font-size:1.1em; font-weight:bold;">수학 함수</span>
 
 *avg()*는 데이터의 평균을 출력하는 함수이다.
 
@@ -160,7 +157,7 @@ Num 데이터 입력 시, *'null'*로 빈 값 입력하면 자동으로 값을 �
 
 `select sum(컬럼) from 테이블;`
 
-#### 날짜 관련 함수
+<span style="font-size:1.1em; font-weight:bold;">날짜 관련 함수</span>
 
 *monthname()*은 월을 나타내는 함수이다.
 

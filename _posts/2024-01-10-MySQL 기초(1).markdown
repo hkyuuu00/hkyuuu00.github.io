@@ -12,13 +12,10 @@ tags:
   - MySQL
   - DB
 ---
+<span style="font-size:1.9em; font-weight:bold;">목차</span>
+* TOC
+{:toc}
 
-## 목차
-
-- MySQL 실행
-- MySQL 기본 명령어
-- MySQL 기본 문법 - DDL
-- MySQL 기본 문법 - DML
 
 ## MySQL 실행
 
@@ -72,7 +69,7 @@ DB 선택
 
 ## MySQL 기본 문법 - DDL
 
-### 테이블 생성
+<span style="font-size:1.4em; font-weight:bold;">테이블 생성</span>
 
 테이블 생성에서는 테이블을 생성하고 테이블에 들어가는 컬럼들을 넣어줘야 한다.
 
@@ -124,13 +121,13 @@ grade char(2)
 - datetime : 날짜와 시간 값 "YYYY-MM-DD hh:mm:ss" 형식
 - timestamp: 타임 스탬프 값 "YYYYMMDDhhmmss" 형식
 
-### 테이블 수정
+<span style="font-size:1.4em; font-weight:bold;">테이블 수정</span>
 
 테이블을 수정하기 위해 *alter*와 *SQL 명령어*를 이용하여 수정해준다.
 
 `alter table 테이블 이름 [SQL 명령어] 컬럼이름 데이터형;`
 
-#### 컬럼 추가
+<span style="font-size:1.1em; font-weight:bold;">컬럼 추가</span>
 
 먼저 컬럼을 하나 추가하고 싶으면 *add*를 이용하여 추가할 수 있으며, 추가하는 위치는 *after*와 *first*를 이용하여 위치를 선택할 수 있다.
 
@@ -146,7 +143,7 @@ grade char(2)
 
 //grade 테이블에서 num 컬럼을 맨 앞에 추가한다.
 
-#### 컬럼 변경
+<span style="font-size:1.1em; font-weight:bold;">컬럼 변경</span>
 
 다음은 데이터 변경으로 *change*와 *modify*를 이용하여 변경할 수 있으며, rename을 사용하여 이름을 변경할 수 있다.
 
@@ -162,7 +159,7 @@ grade char(2)
 
 //grade 테이블의 이름을 student로 변경한다.
 
-### 테이블 삭제와 구조 확인
+<span style="font-size:1.4em; font-weight:bold;">테이블 삭제와 구조 확인</span>
 
 다음은 *drop*을 사용하여 제거할 수 있으며, 테이블 구조를 확인할 때에는 *desc*를 이용하여 확인할 수 있다.
 
@@ -180,7 +177,7 @@ grade char(2)
 
 ## MySQL 기본 문법 - DML
 
-### 테이블에 데이터 삽입
+<span style="font-size:1.4em; font-weight:bold;">테이블에 데이터 삽입</span>
 
 테이블에 데이터를 삽입하기 위한 명령이다.
 
@@ -227,7 +224,7 @@ grade char(2)
   </tbody>
 </table>
 
-### 테이블 데이터 조회
+<span style="font-size:1.4em; font-weight:bold;">테이블 데이터 조회</span>
 
 테이블에 데이터를 넣었으면 데이터를 조회하여 확인해보기 위해 데이터를 조회하는 명령을 알아보자.
 
@@ -245,7 +242,7 @@ grade char(2)
 
 이렇게 *where*을 이용해 조건을 붙힐 수 있다.
 
-### 테이블 데이터 수정
+<span style="font-size:1.4em; font-weight:bold;">테이블 데이터 수정</span>
 
 테이블 데이터가 문제가 있을 경우 수정하기 위한 명령을 알아보자.
 
@@ -257,7 +254,7 @@ grade char(2)
 
 //num 컬럼이 1번인 데이터의 name 컬럼을 park으로 수정한다.
 
-### 테이블 데이터 삭제
+<span style="font-size:1.4em; font-weight:bold;">테이블 데이터 삭제</span>
 
 컬럼이나 테이블, 데이터베이스를 삭제하는 *drop*과는 다르게 테이블 안에 있는 데이터를 지우기 위해 사용되는 명령으로 *delete*를 이용하여 삭제한다.
 
