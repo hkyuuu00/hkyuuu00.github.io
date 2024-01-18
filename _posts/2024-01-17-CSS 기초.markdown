@@ -5,7 +5,7 @@ title: "[CSS] CSS 기초 정리"
 subtitle: "CSS의 기초를 정리하여 HTML의 디자인하기"
 description: CSS의 기초를 정리하여 HTML의 디자인요소를 추가하는법 배우기
 image: /assets/img/post/css.jpg
-optimized_image: /assets/img/post/css.jpg
+optimized_image: /assets/img/post/css-optimized.jpg
 category: programing
 tags:
   - programing
