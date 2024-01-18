@@ -1,0 +1,264 @@
+---
+date: 2024-01-17 22:32:11 +0900
+layout: post
+title: "[CSS] CSS 기초 정리"
+subtitle: "CSS의 기초를 정리하여 HTML의 디자인하기"
+description: CSS의 기초를 정리하여 HTML의 디자인요소를 추가하는법 배우기
+image: /assets/img/post/css.jpg
+optimized_image: /assets/img/post/css.jpg
+category: programing
+tags:
+  - programing
+  - CSS
+  - HTML
+---
+
+<span style="font-size:1.9em; font-weight:bold;">목차</span>
+* TOC
+{:toc}
+
+
+## CSS 기본 개념
+
+*CSS*(Cascading Style Sheets)
+
+ - 속성이름과 속성값은 **콜론(:)**으로 연결, 여러 속성을 적용할 때는 각 속성에 **세미콜론(;)**을 사용하여 연결한다.
+ - 마지막 속성에는 **세미콜론(;)** 생략할 수 있다.
+ - 주석을 표현할 때에는 `/*  */`로 표기한다.
+ - 기본 문법으로는 `a(선택자) {background-color(속성명): yellow(속성값); font-size(속성명): 16px(속성값)}`
+
+## 스타일 지정 방식
+
+스타일의 지정 방식으로는 세 가지 방법이 있다.
+
+<span style="font-size:1.1em; font-weight:bold;">인라인 스타일(Inline style)</span>
+
+특정 태그에 *style* 속성을 사용하여 정의하는 방법으로 해당 요소에만 적용 가능하다.
+ 
+```html
+<p style = 'color: green; text-decoration: underline'>본문 내용</p>
+```
+
+<span style="font-size:1.1em; font-weight:bold;">내부 스타일 시트(Internal style sheet)</span>
+
+*<head>*태그 내에 *<style></style>*태그를 사용하여 문서의 전체적인 스타일을 정의한다.
+
+```html
+<!DOCTYPE html>
+    <html>
+        <head>
+            <meta charset ='utf8'>
+            <title>HTML 실습</title>
+
+            <style>
+                body { background-color: yellow; }
+                p { color: red; text-decoration: underline; }
+            </style>
+        </head>
+        
+        <body>
+            <p>Hello World</p>
+        </body>
+    </html>
+```
+
+<span style="font-size:1.1em; font-weight:bold;">외부 스타일 시트(External style sheet)</span>
+
+스타일과 관련된 코드를 별도로 파일로 관리하며, 각 문서에서는 해당 파일을 읽어 들여 사용
+
+*html*에서 불러오기
+```html
+<link rel = 'stylesheet' href = '/style/style1.css'> 
+```
+
+*style1.css*
+```css
+body { background-color: green; }
+p { color: white; text-decoration: underline; }
+```
+
+세 가지 방법 중 스타일 적용 우선 순위
+
+ 1. 인라인 스타일
+ 2. 내/외부 스타일 시트
+ 3. 웹 브라우저의 기본 스타일
+
+
+## 선택자
+
+선택자는 스타일 적용 범위를 선택하는 도구이다.
+
+<span style="font-size:1.1em; font-weight:bold;">기본 선택자(Basic selectors)</span>
+
+\* (Universal selector) 전체 요소에 적용<br>
+`* {color: blue;}`
+
+태그명 (Type selector)<br>
+`p {font-size: 15px;}`
+
+.클래스명 (Class selector)<br>
+`.s1 {font-weight: bold;}`
+
+\#id명 (ID selector)<br>
+`#adress {color: grey;}`
+
+\[속성명] (Attribute selector)<br>
+`[uid] {text-decoration: overline;}`
+
+- `[속성명] ='value'` : 해당 속성 값이 일치하는 요소
+- `[속성명] ^='value'` : 해당 속성 값이 'value'로 시작하는 요소
+- `[속성명] $='value'` : 해당 속성 값이 'value'로 끝나는 요소
+- `[속성명] *='value'` : 해당 속성 값이 'value'로 포함된 요소
+
+<span style="font-size:1.1em; font-weight:bold;">복합 선택자(Combinators)</span>
+
+A B (Descendant combinator)
+ - A에 위치한 모든 B 요소
+
+A>B (Child combinator)
+ - A의 바로 아래 자식인 B 요소
+
+A~B (General sibling combinator)
+ - 같은 부모를 가지고 있으며 A를 뒤따르는 모든 B 요소
+
+A+B (Adjacent sibling combinator)
+ - 같은 부모를 가지고 있으며 A 바로 뒤에 위치하는 B요소
+
+ <span style="font-size:1.1em; font-weight:bold;">가상클래스 선택자(Pseudo classes selectors)</span>
+
+ `:link` 방문하지 않은 링크<br>
+ `:visited` 방문한 링크<br>
+ `:hover` 마우스를 위로 올렸을 때<br>
+ `:active` 클릭 했을 때<br>
+ `:focus` 포커스가 들어왔을 때<br>
+
+
+## CSS 속성
+
+*CSS*의 속성은 매우 많기에 기본적인 것들 혹은 자주 사용하는 것들을 알아놓고 나머지는 검색으로 찾는것이 좋다.
+
+<span style="font-size:1.1em; font-weight:bold;">색상</span>
+
+ - `color: silver` 색상이름
+ - `color: rgb(0,0,255)` RGB 색상값
+ - `color: rgba(0,0,255,1)` RGB 반투명 색상값
+ - `color: #008000` 16진수 색상값
+
+
+<span style="font-size:1.1em; font-weight:bold;">배경</span>
+
+ - `background-color: lightblue` 배경색
+ - `background-image: url("/images/photo.png")` 배경 이미지
+ - `background-repeat: repeat-x` 배경 이미지의 수평 반복
+ - `background-repeat: repeat-y` 배경 이미지의 수직 반복
+ - `background-repeat: no-repeat` 배경 이미지가 반복되지 않음
+ - `background-position: 100px 200px` 배경 이미지의 상대 위치 (top, left, right, bottom) 사용 가능
+ - `background-attachment: fixed` 이미지가 화면의 위치에서 이동하지 않음
+
+
+<span style="font-size:1.1em; font-weight:bold;">텍스트</span>
+
+ - `letter-spacing: 10px` 글자 사이의 간격을 설정
+ - `word-spacing: 10px` 단어 사이의 간격을 설정
+ - `text-indent: 30px` 단락의 첫 줄에 들여쓰기 설정
+ - `text-align: left` 텍스트의 수평 방향 정렬을 설정 (left, right, center)
+ - `vertical-align: center` 텍스트의 수평 방향 정렬을 설정 (top, bottom, center)
+ - `text-decoration: ` 텍스트에 여러가지 효과
+    - `overline` 윗줄
+    - `line-through` 가운데줄
+    - `underline` 밑줄
+    - `none` 링크에 생기는 밑줄을 제거
+ - `text-transform: ` 영문자 설정
+    - `uppercase` 모든 영문자를 대문자
+    - `lowercase` 모든 영문자를 소문자
+    - `capitalize` 모든 영문자의 첫 문자만 대문자
+ - `line-height: 1.8` 텍스트의 줄간격을 설정
+ - `text-shadow: 2px 1px #3399CC` 텍스트에 그림자 효과
+
+
+<span style="font-size:1.1em; font-weight:bold;">글꼴</span>
+
+ - `font-family: "Times New Roman", Times, serif;` 텍스트의 폰트를 설정
+ - `font-style: italic` 폰트 스타일 설정
+ - `font-weight: bold` 폰트의 굵기 조절
+ - `font-size: 15px;` 폰트의 크기 조절
+ 
+
+<span style="font-size:1.1em; font-weight:bold;">링크</span>
+
+ - `a:link { color: olive; }` 링크로 접속하지 않은 상태
+ - `a:visited { color: brown; }` 링크를 통해 접속한 상태
+ - `a:hover { color: coral; }` 마우스 커서가 링크에 올라가 있는 상태
+ - `a:active { color: khaki; }` 사용자가 마우스로 클릭하고 있는 상태
+
+
+<span style="font-size:1.1em; font-weight:bold;">리스트</span>
+
+ - `list-style-type: circle` 리스트 스타일 원으로 설정
+ - `list-style-type: square` 리스트 스타일 사각형으로 설정
+ - `list-style-type: upper-alpha` 리스트 스타일 알파벳 대문자로 설정
+ - `list-style-type: lower-roman` 리스트 스타일 로마 숫자로 설정
+ - `list-style-image: url("/images/list_marker.png")` 특정 이미지를 마커로 사용
+ - `list-style-position: inside` 리스트 요소의 위치를 설정
+
+
+<span style="font-size:1.1em; font-weight:bold;">테이블</span>
+
+ - `border: 2px solid orange` 테이블 테두리 스타일 조정 (top, left, right를 사용하여 테두리 위치 조절 가능)
+ - `border-radius: 10px` 테이블 모서리를 둥글게 설정
+ - `border-collapse: collapse` 테이블의 테두리를 한 줄로 표시
+ - `border-spacing: 20px 30px` 테이블 요소간의 여백을 설정 (양옆, 위아래 순으로 설정)
+
+
+<span style="font-size:1.1em; font-weight:bold;">크기</span>
+
+ - `height: 200px; width: 500px` 크기 조절
+ - `max-width: 500px; min-width: 500px` 최대 너비와 최소 너비를 설정
+ - `max-height: 50px; min-height: 100px;` 최대 높이와 최소 높이를 설정
+
+
+<span style="font-size:1.1em; font-weight:bold;">박스모델</span>
+
+ - `box-sizing : border-box` 경계선까지의 크기를 지정
+ - `box-sizing : content-box` 경계선까지의 크기를 지정(기본값)
+ - `padding: 20px` 요소의 경계(border)와 그 내부 콘텐츠 사이의 공간 조절
+ - `margin: 20px` 요소와 그 주변 요소와의 공간 조절
+
+
+<span style="font-size:1.1em; font-weight:bold;">테두리</span>
+
+`border-style:` 테두리의 스타일 설정
+ - `dotted` 점선
+ - `dashed` 긴 점선
+ - `solid` 실선
+ - `double` 이중 실선
+ - `groove` 입체적인 선
+ - `ridge` 능선효과 선
+ - `inset` 내지로 끼운 선
+ - `outset` 외지로 씨운 선
+ - `none` 없음
+ - `hidden` 표현되지 않음
+ - `solid dashed dotted double` 네 방향으로 각기 다른 모양의 테두리를 적용
+
+ `border-width:` 테두리의 두께 설정
+ - `border-width: 5px` 픽셀 단위로 설정
+ - `border-width: thin` thin, medium, thick을 사용하여 설정
+
+`border-color:` 테두리의 색상 설정 (Color 속성과 같음)
+
+
+<span style="font-size:1.1em; font-weight:bold;">줄 바꿈</span>
+
+`display:` 줄 바꿈 설정
+- `block` width height 받음, 전후 줄바꿈(한 줄에 하나)
+- `inline` width, height 무시 (only content)
+- `inline-block` width, height 받음, 전후 줄바꿈하지 않음
+
+
+<span style="font-size:1.1em; font-weight:bold;">위치</span>
+
+ - `position: static` left/right/top/bottom의 값을 무시함
+ - `position: relative` left/right/top/bottom을 원래 있던 위치를 기준으로 움직임
+ - `position: absolute` 상위 요소를 기준으로 위치를 설정하는 방식, 상위 요소를 가지지 않는다면 HTML 문서의 body 요소를 기준으로 위치를 설정
+ - `position: fixed` left/right/top/bottom을 화면 기준
+ - `position : sticky` 원래 상태 그대로 있다가 스크롤로 인해 자신이 안보일 때 보이게 고정
