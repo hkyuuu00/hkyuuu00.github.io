@@ -1,7 +1,7 @@
 ---
 date: 2024-01-10 18:30:08 +0900
 layout: post
-title: "[MySQL] MySQL 기초 정리 - (1)"
+title: "[MySQL] MySQL 기초 정리 [1]"
 subtitle: "MySQL 기초를 정리하며 데이터베이스 배우기"
 description: MySQL의 기본 문법들을 공부하며 정리하고 데이터베이스에 대해 공부하는 글
 image: /assets/img/post/mysql.jpg
