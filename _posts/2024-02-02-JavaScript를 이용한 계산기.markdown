@@ -1,5 +1,5 @@
 ---
-date: 2024-02-01 20:31:22 +0900
+date: 2024-02-02 23:30:12 +0900
 layout: post
 title: "[JS] JavaScript를 이용한 계산기 만들기"
 subtitle: "JavaScript를 이용하여 계산기를 만들어보자."
