@@ -6,6 +6,7 @@ title: About
 description: Some description.
 permalink: /about/
 ---
+<meta name="format-detection" content="telephone=no" />
 <style>
     @font-face {
         font-family: 'Cafe24Ssurround';
