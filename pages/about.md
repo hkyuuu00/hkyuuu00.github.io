@@ -192,7 +192,7 @@ permalink: /about/
 <div id="Menu1" class="tabcontent">
     <div class="intro">
         <div class="item2">
-            <img src="../assets/img/post/skyscraper.jpg" alt="Your Image" id ="img">
+            <img src="../assets/img/uploads/lhk.jpg" alt="Your Image" id ="img">
         </div>
         <div class="item" style="position: relative; bottom: 30px;">
             <h3 class="text">MY INTRODUCTION</h3><br>
