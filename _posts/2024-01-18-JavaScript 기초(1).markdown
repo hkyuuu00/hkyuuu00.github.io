@@ -1,5 +1,5 @@
 ---
-date: 2024-01-18 21:18:01 +0900
+date: 2024-01-18 19:18:01 +0900
 layout: post
 title: "[JS] JavaScript 기초 정리 [1]"
 subtitle: "JavaScript 기초를 정리하여 자세히 알아보기"
