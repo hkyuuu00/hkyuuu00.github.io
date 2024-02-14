@@ -556,6 +556,39 @@ const result = target.lastIndexOf('호랑이'); //뒤에서부터 찾는 인덱�
 //1
 ```
 
+기타 배열 사용
+```js
+let NewArray = [...Array1, ...Array2] 
+//배열 합치기
+NewArray = Array1.concat(Array2);
+//배열 합치기
+
+const a = [1,2,3,4,5]
+a.map((item, 인덱스) => item +1);
+//배열 반복(for문과 같음)    
+//[2,3,4,5,6]
+
+console.log(exArray6.filter((item) => item > 3));
+//exArray6의 배열들을 item으로 하고 3보다 뒤의 배열들 호출
+```
+
+*forEach*사용
+```js
+const arr = [1, 2, 3, 4, 5];
+
+arr.forEach(function(element, index) {
+  console.log(`Index ${index}: ${element}`);
+});
+
+//Index 0: 1
+//Index 1: 2
+//Index 2: 3
+//Index 3: 4
+//Index 4: 5
+```
+*forEach* 함수는 자바스크립트 배열에 존재하는 각 요소에 대해 함수를 실행하는 메서드로, 배열을 순회하면서 특정 작업을 수행한다.<br>
+*forEach*는 배열의 모든 요소에 대해 인수로 주어진 콜백 함수를 실행한다.
+
 
 <span style="font-size:1.4em; font-weight:bold;">JSON</span>
 
@@ -596,3 +629,4 @@ console.log(parsingData.name); //"호랑이"
 let jsonStringAgain = JSON.stringify(parsingData);
 console.log(jsonStringAgain); //'{ "name":"호랑이", "age":10 }'
 ```
+
