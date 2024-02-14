@@ -1,0 +1,197 @@
+---
+date: 2024-02-13 20:11:12 +0900
+layout: post
+title: "[React] React 기초 정리 [1]"
+subtitle: "React의 기초를 정리해보자."
+description: React를 시작하기에 앞서 기초를 정리하여 공부하기
+image: /assets/img/post/react.jpg
+optimized_image: /assets/img/post/react-optimized.jpg
+category: programing
+tags:
+  - programing
+  - React
+---
+
+<span style="font-size:1.9em; font-weight:bold;">목차</span>
+* TOC
+{:toc}
+
+
+## React란?
+
+<span style="font-size:1.4em; font-weight:bold;">React</span>
+
+*React*는 자바스크립트 라이브러리로써 싱글 페이지 어플리케이션을 생성하는 라이브러리이다. 페이스북 (현 *Meta*)에서 공개한 라이브러리이며 컴포넌트라는 작은 단위 기반으로 개발하기에 다른 라이브러리나 프레임워크에도 활용되기 쉽다.
+
+
+<span style="font-size:1.4em; font-weight:bold;">React의 특징</span>
+
+*React*는 *Virtual DOM*을 사용하여 필요한 곳만 업데이트를 해주는 형식이다. 덕분에 빠른 로딩 속도와 반응성 높은 UI를 구현할 수 있다.
+
+
+## React 시작하기
+1. 자바스크립트가 브라우저 외부에서도 동작할 수 있도록 *Node.js*를 설치
+2. *NPM(Node Package Manager)*을 이용하여 *React*를 설치하고 관리
+3. *Create React App*을 이용하여 *React* 개발을 시작할 수 있도록 환경을 구성
+
+
+<span style="font-size:1.4em; font-weight:bold;">React 프로젝트 구조</span>
+
+*Create React App*을 사용하여 프로젝트를 생성하면 여러가지 폴더들이 나온다.
+
+ - public 폴더: 웹 페이지가 공개적으로 접근 가능한 파일들이 위치한다. 컴포넌트들이 여기에 있는 *index.html*에 주입되어 사용자에게 보여진다. 
+
+ - src 폴더: 실제로 작성하는 *React* 소스 코드들이 위치하며, 컴포넌트 파일, 스타일 파일, 테스트 파일 등이 위치한다.
+
+ - index.js 파일: 웹 어플리케이션의 시작점으로, *ReactDOM.render 메서드를 통해 어플리케이션의 최상위 컴포넌트가 index.html의 특정 요소에 렌더링 되도록 해준다.
+
+ - App.js 파일: 첫 번째 리액트 컴포넌트가 정의되는 곳으로 주요 레이아웃을 구성하거나 다른 컴포넌트들을 *import*하여 사용한다. 
+
+
+## JSX
+**JSX**는 *JavaScript*와 *XML*이 합쳐진 문법이다.
+*XML*은 *HTML*과 같은 마크업 언어이지만, *HTML*은 데이터를 표현하는 마크업 언어이고, *XML*은 데이터를 기술하는 언어이다.
+
+<span style="font-size:1.4em; font-weight:bold;">JSX 장점</span>
+
+- HTML과 유사한 구조로 컴포넌트를 작성하기에 코드를 읽기 쉽다.
+- 가독성이 향상되어 유지보수가 용이하다.
+- 컴포넌트를 HTML 태그처럼 간결하게 작성할 수 있다.
+
+<span style="font-size:1.4em; font-weight:bold;">JSX 문법</span>
+
+<span style="font-size:1.1em; font-weight:bold;">최상위 태그로 감싸기</span>
+
+컴포넌트에 여러 요소를 감싸는 하나의 부모요소가 필요하다.
+```js
+import React from 'react';
+
+export default function App(){
+    return(
+        <div> {/*div를 이용하여 요소들을 감싸준다.*/}
+            <h1>Hello, World!</h1>
+            <h2>React</h2>
+        </div>
+    )
+}
+```
+Virtual DOM에서 컴포넌트 변화를 감지해 낼 때 효율적으로 비교할 수 있도록 컴포넌트 내부는 하나의 DOM 트리구조로 이루어져야한다.
+
+
+<span style="font-size:1.1em; font-weight:bold;">자바스크립트 표현하기</span>
+
+자바스크립트의 값을 JSX안에서 렌더링 할 수 있다.
+```js
+import React from 'react';
+
+export default function App(){
+    const name = 'React';
+
+    return(
+        <div>
+            <h1>Hello, World!</h1>
+            <h2>I'm {name}</h2>
+        </div>
+    )
+}
+```
+
+
+<span style="font-size:1.1em; font-weight:bold;">조건부 연산자 (삼항 연산자)</span>
+
+JSX 내부의 자바스크립트 표현식 내에서 if문을 사용할 수 없기에 조건부 연산자를 사용한다.
+```js
+import React from 'react';
+
+export default function App(){
+    const name = 'React';
+
+    return(
+        <div>
+            {name === 'React' ? <h1>리액트</h1> : <h1>리액트 아님</h1>}
+            {/*조건식 ? 조건이 맞는 경우 : 다른 경우*/}
+        </div>
+    )
+}
+```
+
+
+<span style="font-size:1.1em; font-weight:bold;">Undefined 렌더링</span>
+
+리액트 컴포넌트에서 *Undefined*를 반환하면 오류가 생긴다.<br>
+하지만 *JSX* 내부에서 렌더링을 하는 것은 가능하다.
+```js
+import React from 'react';
+
+export default function App(){
+    {/*const name = 'undefined';
+       return name;     오류 발생*/}
+    const name = 'undefined';
+
+    return(
+        <div>
+            {name}
+        </div>
+    )
+}
+```
+*JSX* 밖에서는 *OR*연산자를 사용하여 값이 *undefined*일 때 사용할 값을 지정하면 오류를 방지할 수 있다.
+
+
+<span style="font-size:1.1em; font-weight:bold;">JSX에서 Style사용</span>
+
+HTML에서 스타일을 지정할 때는 font-size 처럼 "-" 문자를 사용하는데, JSX에서는 "-" 문자를 모두 없애고 카멜 표기법으로 작성해야 한다.
+```js
+import React from 'react';
+
+export default function App(){
+    const style = {
+        backgroundColor: 'blue',
+        fontSize: '15px',
+        fontWeight: 'bold'
+    }
+
+    return(
+        <div style = {style}>Hello, World!</div>
+    )
+}
+```
+
+
+<span style="font-size:1.1em; font-weight:bold;">JSX에서 class</span>
+
+*HTML*에서 *div*와 같은 태그 요소들에 *class* 속성을 설정할 때에는 *class*를 사용하지만, *JSX*에서는 ***className***을 사용해줘야 한다.
+```js
+import React from 'react';
+
+export default function App(){
+    return(
+        <div className = 'hello'>Hello, World!</div>
+    )
+}
+```
+
+
+<span style="font-size:1.1em; font-weight:bold;">태그와 주석</span>
+
+*JSX*에서는 시작하고 닫아주는 태그를 반드시 작성해야하며 하지않으면 오류가 난다.<br>
+또한 태그 내부에 내용이 없을 경우 *self-closing*태그를 이용할 수 있다.
+```js
+<App></App>
+//self-closing 태그
+<App />
+```
+
+React에서 주석처리는 자바스크립트와 똑같은 //, /\* \*/를 이용하지만
+*JSX*에서의 주석 처리는 {/* */}를 이용한다.
+```js
+import React from 'react';
+//JSX 밖에서 주석
+export default function App(){
+    return(
+        <div>
+            {/*JSX 내부에서의 주석*/}
+        </div>
+    )
+}
+```
