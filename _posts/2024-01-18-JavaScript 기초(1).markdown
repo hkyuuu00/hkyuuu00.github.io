@@ -303,7 +303,7 @@ switch (result) {
 
 <span style="font-size:1.1em; font-weight:bold;">for문</span>
 
-**for문***은 초기화, 조건, 증감식이 한 문장에 모두 포함되어 있으며, 조건이 *true*인 동안 반복해서 실행한다.
+**for문**은 초기화, 조건, 증감식이 한 문장에 모두 포함되어 있으며, 조건이 *true*인 동안 반복해서 실행한다.
 
 ```js
 for (let i = 0; i < 5; i++) {
